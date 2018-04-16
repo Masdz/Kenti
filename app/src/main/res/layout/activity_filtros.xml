@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="kenti.kaktia.com.kenti.FiltrosActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                style="@style/Titulo"
+                android:text="@string/filtros"
+                />
+            <TextView
+                style="@style/Etiqueta"
+                android:text="@string/categoriaedad"/>
+            <Spinner
+                android:id="@+id/filtrosSPCategoriaedad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                style="@style/Etiqueta"
+                android:text="@string/genero"/>
+            <Spinner
+                android:id="@+id/filtrosSPGenero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                style="@style/Etiqueta"
+                android:text="@string/estilo"/>
+            <Spinner
+                android:id="@+id/filtrosSPEstilo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                style="@style/Etiqueta"
+                android:text="@string/talla"/>
+            <Spinner
+                android:id="@+id/filtrosSPTalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                style="@style/Etiqueta"
+                android:text="@string/temporada"/>
+            <Spinner
+                android:id="@+id/filtrosSPTemporada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                style="@style/Etiqueta"
+                android:text="@string/tipo"/>
+            <Spinner
+                android:id="@+id/filtrosSPTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+    <Button
+        style="@style/Boton"
+        android:text="@string/aceptar"
+        />
+</LinearLayout>
