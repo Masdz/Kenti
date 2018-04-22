@@ -3,12 +3,15 @@ package conexion;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.util.LruCache;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -22,19 +25,36 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import kenti.kaktia.com.kenti.R;
+
 /**
  * Created by masdz on 30/10/2017.
  */
 
-public class Conectar {
+public class Conexion {
     private String url;
     private Context contexto;
     private RequestQueue queue ;
+    private ImageLoader LectorImagen;
 
-    public Conectar(Context contexto, String url) {
+    public Conexion(Context contexto, String url) {
         this.url = url;
         this.contexto = contexto;
         queue = Volley.newRequestQueue(contexto);
+        LectorImagen=new ImageLoader(queue,
+            new ImageLoader.ImageCache() {
+                public final LruCache<String,Bitmap> cache= new LruCache<String,Bitmap>(50);
+                @Override
+                public Bitmap getBitmap(String url) {
+                    return cache.get("url");
+                }
+
+                @Override
+                public void putBitmap(String url, Bitmap bitmap) {
+                    cache.put(url,bitmap);
+                }
+            }
+        );
     }
 
     public Context getContexto(){
@@ -76,12 +96,14 @@ public class Conectar {
             Log.d("Error get","No se pudo realizar la peticion al servidor");
         }
     }
-    public void Getimagen(String ruta,Response.Listener<Bitmap> respuesta,Response.ErrorListener error){
-        try {
-            ImageRequest imgRequest = new ImageRequest(ruta, respuesta, 0, 0, null, error);
-            queue.add(imgRequest);
+
+
+
+    public void cargarImagen(ImageView imagen,String url){
+        try{
+            LectorImagen.get(url,ImageLoader.getImageListener(imagen, R.drawable.carga2,R.drawable.warning));
         }catch (Exception e){
-            Log.d("Error imagen","No se pudo realizar la peticion al servidor");
+            Log.d("Error cargarImagen","No se pudo realizar la peticion al servidor: "+e.getMessage());
         }
     }
 

@@ -8,20 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
-
-import org.w3c.dom.Text;
-
+import conexion.Conexion;
 import kenti.kaktia.com.kenti.R;
 
 public class CuadriculaAdapter extends BaseAdapter{
 
-    CuadriculaItem items[];
-    Context contexto;
-    public CuadriculaAdapter(Context contexto,CuadriculaItem items[]){
+    private CuadriculaItem items[];
+    private Context contexto;
+    private Conexion conexion;
+    public CuadriculaAdapter(Context contexto, CuadriculaItem items[], Conexion conexion){
         this.items=items;
         this.contexto=contexto;
+        this.conexion=conexion;
     }
 
     @Override
@@ -41,11 +39,14 @@ public class CuadriculaAdapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view==null)view=(LayoutInflater.from(contexto)).inflate(R.layout.item_cuadricula,null);
+        if(view==null)
+            view=(LayoutInflater.from(contexto)).inflate(R.layout.item_cuadricula,null);
         CuadriculaItem item=this.items[i];
         ((TextView)view.findViewById(R.id.cuadriculaItemTitulo)).setText(item.getTitulo());
         ((TextView)view.findViewById(R.id.cuadriculaItemDescripcion)).setText(item.getDescripcion());
         if(item.getImagenId()!=null)
+            conexion.cargarImagen(((ImageView)view.findViewById(R.id.cuadriculaItemImagen)),item.getImagenId());
+        else
             ((ImageView)view.findViewById(R.id.cuadriculaItemImagen)).setImageResource(R.drawable.warning);
         return view;
     }
