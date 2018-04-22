@@ -7,8 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import kenti.kaktia.com.kenti.R;
+import kenti.kaktia.com.kenti.adaptadores.CuadriculaAdapter;
+import kenti.kaktia.com.kenti.adaptadores.CuadriculaItem;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +22,7 @@ import kenti.kaktia.com.kenti.R;
 public class inicioFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-
+    View fragmentView;
     public inicioFragment() {
         // Required empty public constructor
     }
@@ -29,7 +32,19 @@ public class inicioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+
+        fragmentView= inflater.inflate(R.layout.fragment_inicio, container, false);
+        GridView cuadricula=(GridView)fragmentView.findViewById(R.id.inicioGVprendas);
+        CuadriculaItem items[]={
+                new CuadriculaItem(0,"Prenda uno","Esta bien chidori",null),
+                new CuadriculaItem(0,"Prenda dos","Esta bien chidori",null),
+                new CuadriculaItem(0,"Prenda tres","Esta bien chidori",null),
+                new CuadriculaItem(0,"Prenda cuatro","Esta bien chidori",null),
+                new CuadriculaItem(0,"Prenda cinco","Esta no esta tan chidori pero igual comprala plox :v\n te conviene",null),
+
+        };
+        cuadricula.setAdapter(new CuadriculaAdapter(getContext(),items));
+        return fragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import kenti.kaktia.com.kenti.fragments.*;
@@ -23,12 +24,15 @@ public class InicioActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, inicioFragment.OnFragmentInteractionListener,combinacionesFragment.OnFragmentInteractionListener,logrosFragment.OnFragmentInteractionListener {
     Fragment currentFragment;
     Toolbar toolbar;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+        textView=(TextView) findViewById(R.id.headerCorreo);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         if(savedInstanceState==null){
             currentFragment=new inicioFragment();
             toolbar.setTitle(R.string.inicio);
@@ -49,7 +53,12 @@ public class InicioActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+        textView=(TextView)view.findViewById(R.id.headerNombre);
+        textView.setText("Hola paps");
         navigationView.setNavigationItemSelectedListener(this);
+
+       // Toast.makeText(this, ""+header, Toast.LENGTH_SHORT).show();
     }
     private void changeFragment (Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
