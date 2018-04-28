@@ -9,6 +9,10 @@ public class Usuario {
     private String correo;
 
     public Usuario() {
+        this.id = 0;
+        this.nombre = "Desconocido";
+        this.contrasenia = "Desconocida";
+        this.correo = "Desconocido";
     }
 
     public Usuario(int id, String nombre, String contrasenia, String correo) {
@@ -49,11 +53,12 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
     public HashMap<String,String> getJson(){
         HashMap param=new HashMap<String,String>();
         param.put("usuario",nombre);
         param.put("correo",correo);
-        param.put("contrasenia",contrasenia);
+        param.put("contraseña",contrasenia);
         return param;
     }
 }
