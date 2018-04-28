@@ -57,14 +57,12 @@
 
     <Button
         android:id="@+id/combinarcancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Boton"
         android:text="Cancelar" />
 
     <Button
         android:id="@+id/combinaraceptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Boton"
         android:text="Aceptar" />
 
 </LinearLayout>

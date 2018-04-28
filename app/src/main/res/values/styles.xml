@@ -32,8 +32,12 @@
         <item name="android:textAlignment">center</item>
     </style>
     <style name="Boton">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/primary_dark</item>
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="cuadricula">
         <item name="android:layout_width">match_parent</item>
