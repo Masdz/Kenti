@@ -15,8 +15,9 @@
            android:id="@+id/iniciobotonfiltros"
            style="@style/Boton"
            android:text="@string/filtros" />
+
        <GridView
            android:id="@+id/inicioGVprendas"
-           style="@style/cuadricula"/>
+           style="@style/cuadricula" />
    </LinearLayout>
 </FrameLayout>
