@@ -84,7 +84,6 @@ public class inicioFragment extends Fragment {
         super.onViewStateRestored(savedInstanceState);
         if(savedInstanceState!=null){
             items= (CuadriculaItem[]) savedInstanceState.getParcelableArray("items");
-            Log.d("Cargar items","Los items fueron recuperados del dispositivo");
         }else{
             items = new CuadriculaItem[]{
                     new CuadriculaItem(0, "Prenda uno", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ld3bh9laCXXqW2ULG9Lyd0vX_M5rjWwWwdegVwpIgiOOBmczNA"),
@@ -93,7 +92,6 @@ public class inicioFragment extends Fragment {
                     new CuadriculaItem(0, "Prenda cuatro", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTByJF_VtcBxlgASpu0nj99SML5aidyvPcuKgKqVDzsd7L9FOWIDg"),
                     new CuadriculaItem(0, "Prenda cinco", "Esta no esta tan chidori pero igual comprala plox :v\n te conviene", "http://4.bp.blogspot.com/-l5Aff0oOOnc/U4ZaPJgQH1I/AAAAAAAAqO0/2ewhz00ubm8/s1600/97e7eb982033844fad286f3183a3d79a.jpg")
             };
-            Log.d("Cargar items","Los items fueron cargados del servidor");
         }
         adaptador = new CuadriculaAdapter(getContext(), items, conexion);
         cuadricula.setAdapter(adaptador);

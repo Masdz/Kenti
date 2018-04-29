@@ -2,6 +2,9 @@ package conexion;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
@@ -109,17 +112,25 @@ public class Conexion {
     }
     public void cargarImagen(final ImageView imagen, final CuadriculaItem item){
         try{
+            imagen.setImageBitmap(null);
+            imagen.setBackgroundResource(R.drawable.carga);
+            final AnimationDrawable AD= (AnimationDrawable) imagen.getBackground();
+            AD.start();
             LectorImagen.get(item.getImagenId(), new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
                     Bitmap bitmap=response.getBitmap();
-                    imagen.setImageBitmap(bitmap);
-                    item.setImagen(bitmap);
+                    if(bitmap!=null) {
+                        imagen.setImageBitmap(bitmap);
+                        item.setImagen(bitmap);
+                        AD.stop();
+                        imagen.setBackground(null);
+                    }
                 }
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    imagen.setImageResource(R.drawable.warning);
+
                 }
             });
         }catch (Exception e){
