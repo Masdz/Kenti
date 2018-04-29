@@ -1,17 +1,25 @@
 package kenti.kaktia.com.kenti.adaptadores;
 
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import kenti.kaktia.com.kenti.R;
-public class CuadriculaItem {
+@SuppressLint("ParcelCreator")
+public class CuadriculaItem implements Parcelable {
     private String titulo;
     private String descripcion;
     private String imagenId;
     private long itemId;
+    private Bitmap imagen;
 
     public CuadriculaItem() {
         this.titulo = "Sin Titulo";
         this.descripcion = "Sin Descripcion";
         this.imagenId = null;
-        itemId=0;
+        this.itemId=0;
+        this.imagen=null;
     }
 
     public CuadriculaItem(int itemId,String titulo, String descripcion, String imagenId) {
@@ -19,6 +27,35 @@ public class CuadriculaItem {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.imagenId = imagenId;
+        this.imagen=null;
+    }
+
+    protected CuadriculaItem(Parcel in) {
+        titulo = in.readString();
+        descripcion = in.readString();
+        imagenId = in.readString();
+        itemId = in.readLong();
+        imagen = in.readParcelable(Bitmap.class.getClassLoader());
+    }
+
+    public static final Creator<CuadriculaItem> CREATOR = new Creator<CuadriculaItem>() {
+        @Override
+        public CuadriculaItem createFromParcel(Parcel in) {
+            return new CuadriculaItem(in);
+        }
+
+        @Override
+        public CuadriculaItem[] newArray(int size) {
+            return new CuadriculaItem[size];
+        }
+    };
+
+    public Bitmap getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Bitmap imagen) {
+        this.imagen = imagen;
     }
 
     public String getTitulo() {
@@ -51,5 +88,19 @@ public class CuadriculaItem {
 
     public void setItemId(long itemId) {
         this.itemId = itemId;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(titulo);
+        parcel.writeString(descripcion);
+        parcel.writeString(imagenId);
+        parcel.writeLong(itemId);
+        parcel.writeParcelable(imagen, i);
     }
 }

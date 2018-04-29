@@ -26,6 +26,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import kenti.kaktia.com.kenti.R;
+import kenti.kaktia.com.kenti.adaptadores.CuadriculaItem;
 
 /**
  * Created by masdz on 30/10/2017.
@@ -102,6 +103,25 @@ public class Conexion {
     public void cargarImagen(ImageView imagen,String url){
         try{
             LectorImagen.get(url,ImageLoader.getImageListener(imagen, R.drawable.carga2,R.drawable.warning));
+        }catch (Exception e){
+            Log.d("Error cargarImagen","No se pudo realizar la peticion al servidor: "+e.getMessage());
+        }
+    }
+    public void cargarImagen(final ImageView imagen, final CuadriculaItem item){
+        try{
+            LectorImagen.get(item.getImagenId(), new ImageLoader.ImageListener() {
+                @Override
+                public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                    Bitmap bitmap=response.getBitmap();
+                    imagen.setImageBitmap(bitmap);
+                    item.setImagen(bitmap);
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    imagen.setImageResource(R.drawable.warning);
+                }
+            });
         }catch (Exception e){
             Log.d("Error cargarImagen","No se pudo realizar la peticion al servidor: "+e.getMessage());
         }

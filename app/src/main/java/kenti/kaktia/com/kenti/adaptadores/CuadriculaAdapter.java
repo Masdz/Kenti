@@ -1,6 +1,9 @@
 package kenti.kaktia.com.kenti.adaptadores;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +24,7 @@ public class CuadriculaAdapter extends BaseAdapter{
         this.contexto=contexto;
         this.conexion=conexion;
     }
+
 
     @Override
     public int getCount() {
@@ -44,10 +48,16 @@ public class CuadriculaAdapter extends BaseAdapter{
         CuadriculaItem item=this.items[i];
         ((TextView)view.findViewById(R.id.cuadriculaItemTitulo)).setText(item.getTitulo());
         ((TextView)view.findViewById(R.id.cuadriculaItemDescripcion)).setText(item.getDescripcion());
-        if(item.getImagenId()!=null)
-            conexion.cargarImagen(((ImageView)view.findViewById(R.id.cuadriculaItemImagen)),item.getImagenId());
-        else
-            ((ImageView)view.findViewById(R.id.cuadriculaItemImagen)).setImageResource(R.drawable.warning);
+        ImageView imageView=view.findViewById(R.id.cuadriculaItemImagen);
+        if(item.getImagen()!=null){
+            imageView.setImageBitmap(item.getImagen());
+        }else{
+            if(item.getImagenId()!=null){
+                conexion.cargarImagen(imageView,item);
+            }else{
+                imageView.setImageResource(R.drawable.warning);
+            }
+        }
         return view;
     }
 }
