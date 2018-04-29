@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/inicio" />
         <item
+            android:id="@+id/nav_misprendas"
+            android:icon="@drawable/ic_local_library_black_24dp"
+            android:title="@string/misprendas"/>
+        <item
             android:id="@+id/nav_combinaciones"
             android:icon="@drawable/ic_compare_black_24dp"
             android:title="@string/combinaciones" />
@@ -18,12 +22,12 @@
             android:title="@string/logros" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/comunicate">
         <menu>
             <item
                 android:id="@+id/nav_acercade"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Acerca de..." />
+                android:title="@string/acercade" />
         </menu>
     </item>
 

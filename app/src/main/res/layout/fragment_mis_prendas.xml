@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MisPrendas">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/misprendasfiltros"
+            style="@style/Boton"
+            android:text="@string/filtros" />
+        <GridView
+            android:id="@+id/misprendasGVprendas"
+            style="@style/cuadricula"/>
+    </LinearLayout>
+</FrameLayout>

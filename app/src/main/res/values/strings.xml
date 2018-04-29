@@ -22,9 +22,12 @@
     <string name="action_settings">Ajustes</string>
     <!--Opciones de drawer layout-->
     <string name="inicio">Inicio</string>
+    <string name="misprendas">Mis prendas</string>
     <string name="combinaciones">Mis combinaciones</string>
     <string name="logros">Mis Logros</string>
     <string name="filtros">Filtros</string>
+    <string name="acercade">Acerca de...</string>
+    <string name="comunicate">Comunicate</string>
     <!--filtros-->
     <string name="categoriaedad">Categoria de edad</string>
     <string name="genero">Genero</string>

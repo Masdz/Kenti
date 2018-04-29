@@ -21,7 +21,7 @@ import android.widget.Toast;
 import kenti.kaktia.com.kenti.fragments.*;
 
 public class InicioActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, inicioFragment.OnFragmentInteractionListener,combinacionesFragment.OnFragmentInteractionListener,logrosFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, inicioFragment.OnFragmentInteractionListener,combinacionesFragment.OnFragmentInteractionListener,logrosFragment.OnFragmentInteractionListener,MisPrendas.OnFragmentInteractionListener {
     Fragment currentFragment;
     Toolbar toolbar;
     TextView textView;
@@ -29,8 +29,8 @@ public class InicioActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        textView=(TextView) findViewById(R.id.headerCorreo);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        textView=findViewById(R.id.headerCorreo);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         if(savedInstanceState==null){
@@ -113,6 +113,9 @@ public class InicioActivity extends AppCompatActivity
             if (id == R.id.nav_inicio) {
                 currentFragment = new inicioFragment();
                 toolbar.setTitle(R.string.inicio);
+            } else if (id == R.id.nav_misprendas){
+                currentFragment = new MisPrendas();
+                toolbar.setTitle(R.string.misprendas);
             } else if (id == R.id.nav_combinaciones) {
                 currentFragment = new combinacionesFragment();
                 toolbar.setTitle(R.string.combinaciones);
