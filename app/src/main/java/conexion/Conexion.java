@@ -47,7 +47,7 @@ public class Conexion {
         queue = Volley.newRequestQueue(contexto);
         LectorImagen=new ImageLoader(queue,
             new ImageLoader.ImageCache() {
-                public final LruCache<String,Bitmap> cache= new LruCache<String,Bitmap>(50);
+                public final LruCache<String,Bitmap> cache= new LruCache<String,Bitmap>(500);
                 @Override
                 public Bitmap getBitmap(String url) {
                     return cache.get("url");
@@ -130,7 +130,7 @@ public class Conexion {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Log.d("Error:cargarImagen", "No se pudo cargar imagen: "+error.getMessage());
                 }
             });
         }catch (Exception e){

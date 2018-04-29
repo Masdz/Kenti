@@ -86,11 +86,11 @@ public class inicioFragment extends Fragment {
             items= (CuadriculaItem[]) savedInstanceState.getParcelableArray("items");
         }else{
             items = new CuadriculaItem[]{
-                    new CuadriculaItem(0, "Prenda uno", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ld3bh9laCXXqW2ULG9Lyd0vX_M5rjWwWwdegVwpIgiOOBmczNA"),
-                    new CuadriculaItem(0, "Prenda dos", "Esta bien chidori", "http://www.comprarbolsasonline.es/image/cache/data/category_2/woodland-prenda-hombre-ukqtfsu-615-500x500_0.jpg"),
-                    new CuadriculaItem(0, "Prenda tres", "Esta bien chidori", "http://es.advisto.com/user_images/65341_6538_tactical-polo-web.jpg"),
-                    new CuadriculaItem(0, "Prenda cuatro", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTByJF_VtcBxlgASpu0nj99SML5aidyvPcuKgKqVDzsd7L9FOWIDg"),
-                    new CuadriculaItem(0, "Prenda cinco", "Esta no esta tan chidori pero igual comprala plox :v\n te conviene", "http://4.bp.blogspot.com/-l5Aff0oOOnc/U4ZaPJgQH1I/AAAAAAAAqO0/2ewhz00ubm8/s1600/97e7eb982033844fad286f3183a3d79a.jpg")
+                    new CuadriculaItem(0, "Prenda uno", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ld3bh9laCXXqW2ULG9Lyd0vX_M5rjWwWwdegVwpIgiOOBmczNA",4),
+                    new CuadriculaItem(0, "Prenda dos", "Esta bien chidori", "http://www.comprarbolsasonline.es/image/cache/data/category_2/woodland-prenda-hombre-ukqtfsu-615-500x500_0.jpg",4.7f),
+                    new CuadriculaItem(0, "Prenda tres", "Esta bien chidori", "http://es.advisto.com/user_images/65341_6538_tactical-polo-web.jpg",4.5f),
+                    new CuadriculaItem(0, "Prenda cuatro", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTByJF_VtcBxlgASpu0nj99SML5aidyvPcuKgKqVDzsd7L9FOWIDg",4.5f),
+                    new CuadriculaItem(0, "Prenda cinco", "Esta no esta tan chidori pero igual comprala plox :v\n te conviene", "http://4.bp.blogspot.com/-l5Aff0oOOnc/U4ZaPJgQH1I/AAAAAAAAqO0/2ewhz00ubm8/s1600/97e7eb982033844fad286f3183a3d79a.jpg",1.5f)
             };
         }
         adaptador = new CuadriculaAdapter(getContext(), items, conexion);

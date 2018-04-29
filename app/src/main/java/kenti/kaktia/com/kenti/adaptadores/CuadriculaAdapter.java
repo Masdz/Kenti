@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import conexion.Conexion;
@@ -57,6 +58,12 @@ public class CuadriculaAdapter extends BaseAdapter{
             }else{
                 imageView.setImageResource(R.drawable.warning);
             }
+        }
+        RatingBar cali=view.findViewById(R.id.cuadriculaItemcalificacion);
+        if(item.getCalificacion()!=-1){
+            cali.setRating(item.getCalificacion());
+        }else{
+            cali.setVisibility(View.GONE);
         }
         return view;
     }

@@ -13,6 +13,7 @@ public class CuadriculaItem implements Parcelable {
     private String imagenId;
     private long itemId;
     private Bitmap imagen;
+    private float calificacion;
 
     public CuadriculaItem() {
         this.titulo = "Sin Titulo";
@@ -20,14 +21,16 @@ public class CuadriculaItem implements Parcelable {
         this.imagenId = null;
         this.itemId=0;
         this.imagen=null;
+        this.calificacion=-1;
     }
 
-    public CuadriculaItem(int itemId,String titulo, String descripcion, String imagenId) {
+    public CuadriculaItem(int itemId,String titulo, String descripcion, String imagenId, float calificacion) {
         this.itemId=itemId;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.imagenId = imagenId;
         this.imagen=null;
+        this.calificacion=calificacion;
     }
 
     protected CuadriculaItem(Parcel in) {
@@ -36,6 +39,7 @@ public class CuadriculaItem implements Parcelable {
         imagenId = in.readString();
         itemId = in.readLong();
         imagen = in.readParcelable(Bitmap.class.getClassLoader());
+        calificacion = in.readFloat();
     }
 
     public static final Creator<CuadriculaItem> CREATOR = new Creator<CuadriculaItem>() {
@@ -90,6 +94,14 @@ public class CuadriculaItem implements Parcelable {
         this.itemId = itemId;
     }
 
+    public float getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(float calificacion) {
+        this.calificacion = calificacion;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,5 +114,6 @@ public class CuadriculaItem implements Parcelable {
         parcel.writeString(imagenId);
         parcel.writeLong(itemId);
         parcel.writeParcelable(imagen, i);
+        parcel.writeFloat(calificacion);
     }
 }
