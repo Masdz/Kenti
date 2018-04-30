@@ -71,6 +71,14 @@ public class FiltrosActivity extends AppCompatActivity {
             spTalla.setSelection(filtro.getPosTalla());
             spTemporada.setSelection(filtro.getPosTemporada());
             spTipo.setSelection(filtro.getPosTipo());
+        }else{
+            filtro=new Filtro();
+            spEdad.setSelection(savedInstanceState.getInt("posedad"));
+            spGenero.setSelection(savedInstanceState.getInt("posgenero"));
+            spEstilo.setSelection(savedInstanceState.getInt("posestilo"));
+            spTalla.setSelection(savedInstanceState.getInt("postalla"));
+            spTemporada.setSelection(savedInstanceState.getInt("postemporada"));
+            spTipo.setSelection(savedInstanceState.getInt("postipo"));
         }
     }
 
@@ -86,8 +94,6 @@ public class FiltrosActivity extends AppCompatActivity {
     AdapterView.OnItemSelectedListener onEdadSelected=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String dato = i == 0 ? null : (String) adapterView.getItemAtPosition(i);
-            filtro.setEdad(dato);
             filtro.setPosEdad(i);
         }
 
@@ -99,8 +105,6 @@ public class FiltrosActivity extends AppCompatActivity {
     AdapterView.OnItemSelectedListener onGeneroSelected=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String dato = i == 0 ? null : (String) adapterView.getItemAtPosition(i);
-            filtro.setGenero(dato);
             filtro.setPosGenero(i);
         }
 
@@ -112,8 +116,6 @@ public class FiltrosActivity extends AppCompatActivity {
     AdapterView.OnItemSelectedListener onEstiloSelected=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String dato = i == 0 ? null : (String) adapterView.getItemAtPosition(i);
-            filtro.setEstilo(dato);
             filtro.setPosEstilo(i);
         }
 
@@ -125,8 +127,6 @@ public class FiltrosActivity extends AppCompatActivity {
     AdapterView.OnItemSelectedListener onTallaSelected=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String dato = i == 0 ? null : (String) adapterView.getItemAtPosition(i);
-            filtro.setTalla(dato);
             filtro.setPosTalla(i);
         }
 
@@ -138,8 +138,6 @@ public class FiltrosActivity extends AppCompatActivity {
     AdapterView.OnItemSelectedListener onTemporadaSelected=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String dato = i == 0 ? null : (String) adapterView.getItemAtPosition(i);
-            filtro.setTemporada(dato);
             filtro.setPosTemporada(i);
         }
 
@@ -151,8 +149,6 @@ public class FiltrosActivity extends AppCompatActivity {
     AdapterView.OnItemSelectedListener onTipoSelected=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String dato = i == 0 ? null : (String) adapterView.getItemAtPosition(i);
-            filtro.setTipo(dato);
             filtro.setPosTipo(i);
         }
 
@@ -164,30 +160,12 @@ public class FiltrosActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        Log.d("guardando filtro","Se esta guardando: "+filtro);
-        outState.putParcelable("filtro",filtro);
-        Log.d("Filtro guardado","Filtro guardado en bundle: "+filtro);
+        outState.putInt("posedad",spEdad.getSelectedItemPosition());
+        outState.putInt("posgenero",spGenero.getSelectedItemPosition());
+        outState.putInt("posestilo",spEstilo.getSelectedItemPosition());
+        outState.putInt("postalla",spTalla.getSelectedItemPosition());
+        outState.putInt("postemporada",spTemporada.getSelectedItemPosition());
+        outState.putInt("postipo",spTipo.getSelectedItemPosition());
         super.onSaveInstanceState(outState, outPersistentState);
     }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        if(savedInstanceState!=null){
-            Filtro filtro=filtro=savedInstanceState.getParcelable("filtro");
-            if(filtro!=null){
-                this.filtro=filtro;
-            }
-            Log.d("Filtro obtenido","Filtro obtenido del bundle: "+filtro);
-        }
-        if(filtro==null){
-            filtro=new Filtro();
-        }
-        spEdad.setSelection(filtro.getPosEdad());
-        spGenero.setSelection(filtro.getPosGenero());
-        spEstilo.setSelection(filtro.getPosEstilo());
-        spTalla.setSelection(filtro.getPosTalla());
-        spTemporada.setSelection(filtro.getPosTemporada());
-        spTipo.setSelection(filtro.getPosTipo());
-    }
-
 }

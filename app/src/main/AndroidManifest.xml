@@ -32,7 +32,10 @@
             android:name=".CombinarActivity"
             android:label="@string/title_activity_combinar"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".FiltrosActivity"></activity>
+        <activity android:name=".FiltrosActivity"
+            android:label="@string/filtros">
+
+        </activity>
     </application>
 
 </manifest>
