@@ -43,4 +43,42 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_combinar">Crear combinacion</string>
+    <string-array name="arrayedad">
+        <item>Cualquiera</item>
+        <item>Niño</item>
+        <item>Adolecente</item>
+        <item>Adulto</item>
+    </string-array>
+    <string-array name="arraygenero">
+        <item>Cualquiera</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="arrayestilo">
+        <item>Cualquiera</item>
+        <item>Formal</item>
+        <item>Casual</item>
+        <item>Deportivo</item>
+        <item>Formal-Casual</item>
+    </string-array>
+    <string-array name="arraytalla">
+        <item>Cualquiera</item>
+        <item>Chica</item>
+        <item>Mediana</item>
+        <item>Grande</item>
+        <item>Extragrande</item>
+    </string-array>
+    <string-array name="arraytemporada">
+        <item>Cualquiera</item>
+        <item>Primavera-Verano</item>
+        <item>Otoño-Invierno</item>
+    </string-array>
+    <string-array name="arraytipo">
+        <item>Cualquiera</item>
+        <item>Chamarra</item>
+        <item>Sueter</item>
+        <item>Pantalon</item>
+        <item>Playera</item>
+        <item>Blusa</item>
+    </string-array>
 </resources>
