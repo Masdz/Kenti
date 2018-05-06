@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="kenti.kaktia.com.kenti.RegistroActivity">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                style="@style/Titulo"
+                android:text="Compartir"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+
+            <Button
+                style="@style/Boton"
+                android:text="Compartir"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                style="@style/Boton"
+                android:text="Regresar"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
