@@ -36,6 +36,11 @@
             android:label="@string/filtros">
 
         </activity>
+        <activity android:name=".RegistroActivity"
+            android:label="@string/registrar"
+            android:theme="@style/AppTheme"/>
+
+
     </application>
 
 </manifest>
