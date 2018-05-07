@@ -3,6 +3,7 @@ package kenti.kaktia.com.kenti;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
@@ -64,11 +65,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private AnimationDrawable animacion;
+    private Context contexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        contexto=this;
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -92,11 +95,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-
+        ((Button)findViewById(R.id.loginbotonregistrarse)).setOnClickListener(onClicRegistrarse);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         animacion= (AnimationDrawable) mProgressView.getBackground();
     }
+
+    private OnClickListener onClicRegistrarse=new OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(contexto,RegistroActivity.class));
+        }
+    };
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
