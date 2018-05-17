@@ -3,9 +3,13 @@
     package="kenti.kaktia.com.kenti">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!--Obtener cuentas del dispositivo-->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!--Leer perfil de cuenta de usuario-->
     <uses-permission android:name="android.permission.READ_PROFILE" />
+    <!--Leer contactos-->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--Acceso a internet-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -31,17 +35,15 @@
         <activity
             android:name=".CombinarActivity"
             android:label="@string/title_activity_combinar"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".FiltrosActivity"
-            android:label="@string/filtros">
-
-        </activity>
-        <activity android:name=".RegistroActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".FiltrosActivity"
+            android:label="@string/filtros"></activity>
+        <activity
+            android:name=".RegistroActivity"
             android:label="@string/registrar"
-            android:theme="@style/AppTheme"/>
-
-
+            android:theme="@style/AppTheme" />
+        <activity android:name=".DescripcionActivity"></activity>
     </application>
 
 </manifest>

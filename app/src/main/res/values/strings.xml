@@ -40,6 +40,7 @@
     <string name="aceptar">Aceptar</string>
     <string name="titulo">Titulo</string>
     <string name="descripcion">Descripcion</string>
+    <string name="volver">Volver</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_combinar">Crear combinacion</string>

@@ -61,7 +61,8 @@
 
             <Button
                 style="@style/Boton"
-                android:text="Registrar"/>
+                android:text="@string/registrar"
+                android:id="@+id/registrobotonregistrar"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -69,7 +70,8 @@
 
             <Button
                 style="@style/Boton"
-                android:text="Regresar"/>
+                android:text="@string/volver"
+                android:id="@+id/registrobotonregresar"/>
 
 
         </LinearLayout>

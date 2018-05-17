@@ -103,9 +103,11 @@ public class inicioFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        String cadena="cadena";
         super.onSaveInstanceState(outState);
         outState.putParcelableArray("items",items);
         outState.putParcelable("filtro",filtro);
+        outState.putString("mi cadena",cadena);
     }
 
     @Override
