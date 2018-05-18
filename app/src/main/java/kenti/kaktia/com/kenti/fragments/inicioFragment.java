@@ -14,6 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import java.util.HashMap;
+
 import conexion.Conexion;
 import kenti.kaktia.com.kenti.FiltrosActivity;
 import kenti.kaktia.com.kenti.R;
@@ -48,7 +53,7 @@ public class inicioFragment extends Fragment {
         // Inflate the layout for this fragment
 
         fragmentView= inflater.inflate(R.layout.fragment_inicio, container, false);
-        conexion=new Conexion(getContext(),"url");
+        conexion=new Conexion(getContext(),"http://localhost:8080/Ojkali");
         contexto=getContext();
         cuadricula=fragmentView.findViewById(R.id.inicioGVprendas);
         ((Button)fragmentView.findViewById(R.id.iniciobotonfiltros)).setOnClickListener(onClickFiltros);
@@ -117,6 +122,8 @@ public class inicioFragment extends Fragment {
             items= (CuadriculaItem[]) savedInstanceState.getParcelableArray("items");
             filtro= savedInstanceState.getParcelable("filtro");
         }else{
+            HashMap<String,String> mapa=new HashMap<>();
+            conexion.post(mapa,"/Prenda/",prendaError,prendasListener);
             items = new CuadriculaItem[]{
                     new CuadriculaItem(0, "Prenda uno", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ld3bh9laCXXqW2ULG9Lyd0vX_M5rjWwWwdegVwpIgiOOBmczNA",4),
                     new CuadriculaItem(0, "Prenda dos", "Esta bien chidori", "http://www.comprarbolsasonline.es/image/cache/data/category_2/woodland-prenda-hombre-ukqtfsu-615-500x500_0.jpg",4.7f),
@@ -130,6 +137,19 @@ public class inicioFragment extends Fragment {
         cuadricula.setAdapter(adaptador);
     }
 
+    Response.Listener prendasListener=new Response.Listener() {
+        @Override
+        public void onResponse(Object response) {
+            Log.d("onResposePrendas", "onResponse: "+response);
+        }
+    };
+
+    Response.ErrorListener prendaError=new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.d("Error en getPrendas",error+"");
+        }
+    };
 
 
     /**

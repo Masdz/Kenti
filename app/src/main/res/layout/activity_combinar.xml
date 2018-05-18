@@ -1,68 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kenti.kaktia.com.kenti.CombinarActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@mipmap/imgpl1" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@mipmap/imgp1" />
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/combinaraceptar"
+        style="@style/Boton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/aceptar" />
 
     <Button
         android:id="@+id/combinarcancelar"
         style="@style/Boton"
-        android:text="Cancelar" />
+        android:layout_above="@+id/combinaraceptar"
+        android:layout_alignParentStart="true"
+        android:textAllCaps="false"
+        android:text="@string/cancelar" />
 
-    <Button
-        android:id="@+id/combinaraceptar"
-        style="@style/Boton"
-        android:text="Aceptar" />
+    <GridView
+        android:id="@+id/combinargvcombinacion"
+        style="@style/cuadricula"
+        android:layout_above="@+id/combinarcancelar"
+        />
 
-</LinearLayout>
+</RelativeLayout>

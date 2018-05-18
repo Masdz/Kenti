@@ -54,8 +54,13 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public HashMap<String,String> getJson(){
+    public void setRandomId(){
+        this.id= (int) (Math.random()*100000000);
+    }
+
+    public HashMap<String,String> getParams(){
         HashMap param=new HashMap<String,String>();
+        param.put("id",id);
         param.put("usuario",nombre);
         param.put("correo",correo);
         param.put("contraseña",contrasenia);

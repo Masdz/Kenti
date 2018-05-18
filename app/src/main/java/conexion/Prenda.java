@@ -3,35 +3,41 @@ package conexion;
 import kenti.kaktia.com.kenti.adaptadores.CuadriculaItem;
 
 public class Prenda {
-    int id;
-    String tipo;
-    String codigo;
-    String marca;
-    String puntaje;
-    PrendaColor color[];
-    Talla talla[];
-    String etiquetas[];
+    private int id;
+    private int idEmpresa;
+    private int idTipo;
+    private String destacado;
+    private int compartido;
+    private String codigo;
+    private String tipo;// (obligatorio, solo un valor)
+    private String marca; //(opcional, valores separados por comas)
+    private String tallas;// (opcional, valores separados por comas)
+    private String etiquetas;// (opcional, valores separados por comas)
+    private String urls;
+    private String colores;// (opcional, valores separados por comas)
+    private String estilo;// (obligatorio, solo un valor)
+    private String poblacion;// (opcional, valores separados por comas) *
+    private String genero;// (opcional, valores separados por comas) *
 
     public Prenda() {
-        this.id = 0;
-        this.tipo = "No especificado";
-        this.codigo = "No especificado";
-        this.marca = "No especificada";
-        this.puntaje = "0";
-        this.color = null;
-        this.talla = null;
-        this.etiquetas = null;
     }
 
-    public Prenda(int id, String tipo, String codigo, String marca, String puntaje, PrendaColor[] color, Talla[] talla, String[] etiquetas) {
+    public Prenda(int id, int idEmpresa, int idTipo, String destacado, int compartido, String codigo, String tipo, String marca, String tallas, String etiquetas, String urls, String colores, String estilo, String poblacion, String genero) {
         this.id = id;
-        this.tipo = tipo;
+        this.idEmpresa = idEmpresa;
+        this.idTipo = idTipo;
+        this.destacado = destacado;
+        this.compartido = compartido;
         this.codigo = codigo;
+        this.tipo = tipo;
         this.marca = marca;
-        this.puntaje = puntaje;
-        this.color = color;
-        this.talla = talla;
+        this.tallas = tallas;
         this.etiquetas = etiquetas;
+        this.urls = urls;
+        this.colores = colores;
+        this.estilo = estilo;
+        this.poblacion = poblacion;
+        this.genero = genero;
     }
 
     public int getId() {
@@ -42,12 +48,36 @@ public class Prenda {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public String getDestacado() {
+        return destacado;
+    }
+
+    public void setDestacado(String destacado) {
+        this.destacado = destacado;
+    }
+
+    public int getCompartido() {
+        return compartido;
+    }
+
+    public void setCompartido(int compartido) {
+        this.compartido = compartido;
     }
 
     public String getCodigo() {
@@ -58,6 +88,14 @@ public class Prenda {
         this.codigo = codigo;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public String getMarca() {
         return marca;
     }
@@ -66,116 +104,67 @@ public class Prenda {
         this.marca = marca;
     }
 
-    public String getPuntaje() {
-        return puntaje;
+    public String getTallas() {
+        return tallas;
     }
 
-    public void setPuntaje(String puntaje) {
-        this.puntaje = puntaje;
+    public void setTallas(String tallas) {
+        this.tallas = tallas;
     }
 
-    public PrendaColor[] getColor() {
-        return color;
-    }
-
-    public void setColor(PrendaColor[] color) {
-        this.color = color;
-    }
-
-    public Talla[] getTalla() {
-        return talla;
-    }
-
-    public void setTalla(Talla[] talla) {
-        this.talla = talla;
-    }
-
-    public String[] getEtiquetas() {
+    public String getEtiquetas() {
         return etiquetas;
     }
 
-    public void setEtiquetas(String[] etiquetas) {
+    public void setEtiquetas(String etiquetas) {
         this.etiquetas = etiquetas;
+    }
+
+    public String getUrls() {
+        return urls;
+    }
+
+    public void setUrls(String urls) {
+        this.urls = urls;
+    }
+
+    public String getColores() {
+        return colores;
+    }
+
+    public void setColores(String colores) {
+        this.colores = colores;
+    }
+
+    public String getEstilo() {
+        return estilo;
+    }
+
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
+    }
+
+    public String getPoblacion() {
+        return poblacion;
+    }
+
+    public void setPoblacion(String poblacion) {
+        this.poblacion = poblacion;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public  CuadriculaItem getItem(){
         CuadriculaItem item=new CuadriculaItem();
         item.setTitulo(tipo+" "+marca);
-        item.setDescripcion(despEtiquetas());
+        item.setDescripcion(etiquetas);
         return item;
     }
 
-    public String despEtiquetas(){
-        String s="";
-        if(etiquetas!=null) {
-            s=etiquetas[0];
-            int i=1;
-            for (;i < etiquetas.length&&s.length()>100; i++) {
-                s+=", "+etiquetas[i];
-            }
-            if(i<etiquetas.length) s+="...";
-        }
-        return s;
-    }
-    public class Talla{
-        private char codigo;
-        private String talla;
-
-        public Talla(char codigo, String talla) {
-            this.codigo = codigo;
-            this.talla = talla;
-        }
-
-        public Talla() {
-            this.codigo = 'N';
-            this.talla = "No especificada";
-        }
-
-        public char getCodigo() {
-            return codigo;
-        }
-
-        public void setCodigo(char codigo) {
-            this.codigo = codigo;
-        }
-
-        public String getTalla() {
-            return talla;
-        }
-
-        public void setTalla(String talla) {
-            this.talla = talla;
-        }
-    }
-
-    public class PrendaColor{
-        private String color;
-        private String ruta;
-
-        public PrendaColor() {
-            this.color = null;
-            this.ruta = null;
-        }
-
-        public PrendaColor(String color, String ruta) {
-            this.color = color;
-            this.ruta = ruta;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
-        }
-
-        public String getRuta() {
-            return ruta;
-        }
-
-        public void setRuta(String ruta) {
-            this.ruta = ruta;
-        }
-    }
 }

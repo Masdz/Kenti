@@ -10,6 +10,7 @@ import android.util.LruCache;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -77,6 +78,12 @@ public class Conexion {
                 @Override
                 public Map<String, String> getParams() {
                     return paramf;
+                }
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String,String> mapa=new HashMap<>();
+                    mapa.put("Content-Type","application/json");
+                    return mapa;
                 }
             };
             queue.add(postrequest);
