@@ -70,7 +70,7 @@ public class Conexion {
     public Context getContexto(){
         return contexto;
     }
-
+    public String getUrl(){return url;};
     public RequestQueue getQueue(){
         return queue;
     }
@@ -85,15 +85,15 @@ public class Conexion {
         }
     }
 
-    public void get(String port, Response.Listener<String> respuesta){
+    public void get(String port, Response.Listener<JSONArray> respuesta){
         try {
-            StringRequest getRequest = new StringRequest(Request.Method.GET, url + port,respuesta,
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("Error", "Indefinido" + error);
-                        }
+            JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url + port,respuesta,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error", "Indefinido" + error);
                     }
+                }
             );
             queue.add(getRequest);
         }catch (Exception e){

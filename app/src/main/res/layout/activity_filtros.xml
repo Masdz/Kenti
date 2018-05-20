@@ -29,7 +29,7 @@
             style="@style/Etiqueta"
             android:text="@string/tipo" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
             android:id="@+id/filtrosSPTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -42,7 +42,7 @@
             style="@style/Etiqueta"
             android:text="@string/marca" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
             android:id="@+id/filtrosSPMarca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -55,7 +55,7 @@
             style="@style/Etiqueta"
             android:text="@string/etiquetas" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
             android:id="@+id/filtrosSPEtiquetas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -68,7 +68,7 @@
             style="@style/Etiqueta"
             android:text="@string/estilo" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
             android:id="@+id/filtrosSPEstilo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -81,7 +81,7 @@
                 style="@style/Etiqueta"
                 android:text="@string/talla" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
                 android:id="@+id/filtrosSPTalla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -94,7 +94,7 @@
             style="@style/Etiqueta"
             android:text="@string/poblacion" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
             android:id="@+id/filtrosSPPoblacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -107,7 +107,7 @@
             style="@style/Etiqueta"
             android:text="@string/genero" />
 
-            <Spinner
+            <kenti.kaktia.com.kenti.adaptadores.MultiSpinner
             android:id="@+id/filtrosSPGenero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

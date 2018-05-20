@@ -29,7 +29,8 @@ public class CuadriculaAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return items.length;
+
+        return items!=null?items.length:0;
     }
 
     @Override

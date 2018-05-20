@@ -56,7 +56,6 @@ public class inicioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         fragmentView= inflater.inflate(R.layout.fragment_inicio, container, false);
         conexion=new Conexion(getContext(),"http://192.168.137.1:8080/Ojkali");
         contexto=getContext();
@@ -74,6 +73,7 @@ public class inicioFragment extends Fragment {
             }
             Intent filtrosIntent=new Intent(contexto, FiltrosActivity.class);
             filtrosIntent.putExtra("filtro",filtro);
+            filtrosIntent.putExtra("url",conexion.getUrl());
             Log.d("Enviando filtro","Se envio "+ filtro);
             startActivityForResult(filtrosIntent,8888);
         }
@@ -90,6 +90,7 @@ public class inicioFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==8888 && resultCode== Activity.RESULT_OK){
             filtro=data.getExtras().getParcelable("filtro");
+            conexion.post2(filtro.getParams(), "/Prenda/", prendaError, prendasListener);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
