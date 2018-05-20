@@ -5,23 +5,28 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -70,25 +75,13 @@ public class Conexion {
         return queue;
     }
 
-    public void post(Map<String,String> param, String port,Response.ErrorListener error, Response.Listener<String> respuesta){
+    public void post2(String param, String port,Response.ErrorListener error, Response.Listener<JSONArray> respuesta){
         final String portf=port;
-        final Map<String,String> paramf=param;
         try {
-            StringRequest postrequest = new StringRequest(Request.Method.POST, url+port,respuesta,error) {
-                @Override
-                public Map<String, String> getParams() {
-                    return paramf;
-                }
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String,String> mapa=new HashMap<>();
-                    mapa.put("Content-Type","application/json");
-                    return mapa;
-                }
-            };
+            com.android.volley.toolbox.JsonArrayRequest postrequest=new JsonArrayRequest(Request.Method.POST,url+port,param,respuesta,error);
             queue.add(postrequest);
-        }catch (Exception e){
-            Toast.makeText(contexto,"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }catch(Exception e2){
+            Toast.makeText(contexto,"Error: "+e2.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 

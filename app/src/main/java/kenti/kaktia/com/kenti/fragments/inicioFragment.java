@@ -17,14 +17,19 @@ import android.widget.GridView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 import conexion.Conexion;
+import conexion.Filtro;
+import conexion.Prenda;
 import kenti.kaktia.com.kenti.FiltrosActivity;
 import kenti.kaktia.com.kenti.R;
 import kenti.kaktia.com.kenti.adaptadores.CuadriculaAdapter;
 import kenti.kaktia.com.kenti.adaptadores.CuadriculaItem;
-import kenti.kaktia.com.kenti.adaptadores.Filtro;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +58,7 @@ public class inicioFragment extends Fragment {
         // Inflate the layout for this fragment
 
         fragmentView= inflater.inflate(R.layout.fragment_inicio, container, false);
-        conexion=new Conexion(getContext(),"http://localhost:8080/Ojkali");
+        conexion=new Conexion(getContext(),"http://192.168.137.1:8080/Ojkali");
         contexto=getContext();
         cuadricula=fragmentView.findViewById(R.id.inicioGVprendas);
         ((Button)fragmentView.findViewById(R.id.iniciobotonfiltros)).setOnClickListener(onClickFiltros);
@@ -108,11 +113,9 @@ public class inicioFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        String cadena="cadena";
         super.onSaveInstanceState(outState);
         outState.putParcelableArray("items",items);
         outState.putParcelable("filtro",filtro);
-        outState.putString("mi cadena",cadena);
     }
 
     @Override
@@ -121,26 +124,40 @@ public class inicioFragment extends Fragment {
         if(savedInstanceState!=null){
             items= (CuadriculaItem[]) savedInstanceState.getParcelableArray("items");
             filtro= savedInstanceState.getParcelable("filtro");
-        }else{
-            HashMap<String,String> mapa=new HashMap<>();
-            conexion.post(mapa,"/Prenda/",prendaError,prendasListener);
-            items = new CuadriculaItem[]{
-                    new CuadriculaItem(0, "Prenda uno", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ld3bh9laCXXqW2ULG9Lyd0vX_M5rjWwWwdegVwpIgiOOBmczNA",4),
-                    new CuadriculaItem(0, "Prenda dos", "Esta bien chidori", "http://www.comprarbolsasonline.es/image/cache/data/category_2/woodland-prenda-hombre-ukqtfsu-615-500x500_0.jpg",4.7f),
-                    new CuadriculaItem(0, "Prenda tres", "Esta bien chidori", "http://es.advisto.com/user_images/65341_6538_tactical-polo-web.jpg",4.5f),
-                    new CuadriculaItem(0, "Prenda cuatro", "Esta bien chidori", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTByJF_VtcBxlgASpu0nj99SML5aidyvPcuKgKqVDzsd7L9FOWIDg",4.5f),
-                    new CuadriculaItem(0, "Prenda cinco", "Esta no esta tan chidori pero igual comprala plox :v\n te conviene", "http://4.bp.blogspot.com/-l5Aff0oOOnc/U4ZaPJgQH1I/AAAAAAAAqO0/2ewhz00ubm8/s1600/97e7eb982033844fad286f3183a3d79a.jpg",1.5f)
-            };
-            filtro=new Filtro();
+            adaptador = new CuadriculaAdapter(getContext(), items, conexion);
+            cuadricula.setAdapter(adaptador);
+        }else {
+            filtro = new Filtro();
+            Log.d("filtros", filtro.getParams() + "");
+            conexion.post2(filtro.getParams(), "/Prenda/", prendaError, prendasListener);
         }
-        adaptador = new CuadriculaAdapter(getContext(), items, conexion);
-        cuadricula.setAdapter(adaptador);
+
     }
 
-    Response.Listener prendasListener=new Response.Listener() {
+    Response.Listener<JSONArray> prendasListener=new Response.Listener() {
         @Override
         public void onResponse(Object response) {
-            Log.d("onResposePrendas", "onResponse: "+response);
+            JSONArray datos;
+            CuadriculaItem item;
+            JSONArray json= (JSONArray) response;
+            items=new CuadriculaItem[json.length()];
+            Log.d("onResposePrendas", "onResponse: "+json);
+            for(int i=0;i<json.length();i++){
+                try {
+                    datos =json.getJSONArray(i);
+                    items[i]=new CuadriculaItem();
+                    items[i].setItemId(datos.getInt(0));
+                    items[i].setImagenId(datos.getString(1));
+                    items[i].setTitulo(datos.getString(2));
+                    items[i].setDescripcion(datos.getString(3));
+                    items[i].setCalificacion((float) datos.getDouble(4));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+            adaptador = new CuadriculaAdapter(getContext(), items, conexion);
+            cuadricula.setAdapter(adaptador);
         }
     };
 

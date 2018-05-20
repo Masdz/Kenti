@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import conexion.Filtro;
 import kenti.kaktia.com.kenti.fragments.*;
 
 public class InicioActivity extends AppCompatActivity
@@ -32,6 +33,7 @@ public class InicioActivity extends AppCompatActivity
         textView=findViewById(R.id.headerCorreo);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         if(savedInstanceState==null){
             currentFragment=new inicioFragment();

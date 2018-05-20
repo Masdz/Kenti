@@ -15,51 +15,63 @@
         android:text="@string/aceptar" />
 
     <ScrollView
-        android:id="@+id/filtrosContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/filtrosbotonaceptar">
+    android:id="@+id/filtrosContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@+id/filtrosbotonaceptar">
 
         <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+            <TextView
+            style="@style/Etiqueta"
+            android:text="@string/tipo" />
+
+            <Spinner
+            android:id="@+id/filtrosSPTipo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/Etiqueta"
-                android:text="@string/categoriaedad" />
-
-            <Spinner
-                android:id="@+id/filtrosSPCategoriaedad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
             <TextView
-                style="@style/Etiqueta"
-                android:text="@string/genero" />
+            style="@style/Etiqueta"
+            android:text="@string/marca" />
 
             <Spinner
-                android:id="@+id/filtrosSPGenero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:id="@+id/filtrosSPMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
             <TextView
-                style="@style/Etiqueta"
-                android:text="@string/estilo" />
+            style="@style/Etiqueta"
+            android:text="@string/etiquetas" />
 
             <Spinner
-                android:id="@+id/filtrosSPEstilo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:id="@+id/filtrosSPEtiquetas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+            style="@style/Etiqueta"
+            android:text="@string/estilo" />
+
+            <Spinner
+            android:id="@+id/filtrosSPEstilo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
             <Space
                 android:layout_width="match_parent"
@@ -79,26 +91,31 @@
                 android:layout_height="20dp" />
 
             <TextView
-                style="@style/Etiqueta"
-                android:text="@string/temporada" />
+            style="@style/Etiqueta"
+            android:text="@string/poblacion" />
 
             <Spinner
-                android:id="@+id/filtrosSPTemporada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:id="@+id/filtrosSPPoblacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
             <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
             <TextView
-                style="@style/Etiqueta"
-                android:text="@string/tipo" />
+            style="@style/Etiqueta"
+            android:text="@string/genero" />
 
             <Spinner
-                android:id="@+id/filtrosSPTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:id="@+id/filtrosSPGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
 
         </LinearLayout>
 
