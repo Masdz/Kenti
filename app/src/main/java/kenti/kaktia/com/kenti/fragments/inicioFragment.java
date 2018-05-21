@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
@@ -26,6 +27,7 @@ import java.util.HashMap;
 import conexion.Conexion;
 import conexion.Filtro;
 import conexion.Prenda;
+import kenti.kaktia.com.kenti.DescripcionActivity;
 import kenti.kaktia.com.kenti.FiltrosActivity;
 import kenti.kaktia.com.kenti.R;
 import kenti.kaktia.com.kenti.adaptadores.CuadriculaAdapter;
@@ -60,6 +62,7 @@ public class inicioFragment extends Fragment {
         conexion=new Conexion(getContext(),"http://192.168.137.1:8080/Ojkali");
         contexto=getContext();
         cuadricula=fragmentView.findViewById(R.id.inicioGVprendas);
+        cuadricula.setOnItemClickListener(onItemclick);
         ((Button)fragmentView.findViewById(R.id.iniciobotonfiltros)).setOnClickListener(onClickFiltros);
         return fragmentView;
     }
@@ -85,6 +88,17 @@ public class inicioFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+    AdapterView.OnItemClickListener onItemclick=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Log.d("itemSeleccionado", "onItemClick: "+i+","+l+","+items[i]);
+            Intent intento=new Intent(contexto, DescripcionActivity.class);
+            intento.putExtra("url",items[i].getImagenId());
+            intento.putExtra("id",items[i].getItemId());
+            startActivity(intento);
+        }
+    };
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

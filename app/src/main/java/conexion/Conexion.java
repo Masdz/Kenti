@@ -100,6 +100,21 @@ public class Conexion {
             Log.d("Error get","No se pudo realizar la peticion al servidor");
         }
     }
+    public void get2(String port, Response.Listener<JSONObject> respuesta){
+            try {
+                JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url + port,respuesta,
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("Error", "Indefinido" + error);
+                        }
+                    }
+                );
+                queue.add(getRequest);
+            }catch (Exception e){
+                Log.d("Error get","No se pudo realizar la peticion al servidor");
+            }
+        }
 
 
 

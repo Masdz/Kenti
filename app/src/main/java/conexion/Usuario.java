@@ -1,5 +1,9 @@
 package conexion;
 
+import com.android.volley.Response;
+
+import org.json.JSONArray;
+
 import java.util.HashMap;
 
 public class Usuario {
@@ -58,12 +62,13 @@ public class Usuario {
         this.id= (int) (Math.random()*100000000);
     }
 
-    public HashMap<String,String> getParams(){
-        HashMap param=new HashMap<String,String>();
-        param.put("id",id);
-        param.put("usuario",nombre);
-        param.put("correo",correo);
-        param.put("contraseña",contrasenia);
+    public String getParams(){
+        String param="";
+        param+="{\"id\":\""+id+"\",";
+        param+="\"usuario\":\""+nombre+"\",";
+        param+="\"correo\":\""+correo+"\",";
+        param+="\"contraseña\":\""+contrasenia+"\"}";
         return param;
     }
+
 }

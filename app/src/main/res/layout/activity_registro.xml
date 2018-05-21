@@ -24,37 +24,49 @@
                 android:layout_height="50dp" />
 
             <EditText
-                android:id="@+id/usuario"
+                android:id="@+id/registrousuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Usuario" />
+                android:hint="Usuario" />
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/registroemail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:text="Correo" />
+                android:hint="Correo" />
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
             <EditText
-                android:id="@+id/contrasenia"
+                android:id="@+id/registrocontrasenia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:text="Contraseña" />
+                android:hint="Contraseña" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <EditText
+                android:id="@+id/registrocontrasenia2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Repetir contraseña" />
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
